@@ -7,20 +7,38 @@
  * 4. Add comments and Javadoc comments where needed
  * 5. Remove unnecessary comments as appropriate
  */
+ /** .
+  *  ReclamationProject - the name of this project
+ */
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
+public class ReclamationProject {
+    /** .
+     * @param a - input by user
+     * @param b - input by user
+     * @return doit - processing body
+     */
+    static String doit(final String a, final String b) {
+        String r = "";
+        String c = b;
+        String d = a;
+        if (a.length() > b.length()) {
+            c = a; //exchange the value of a and b
+            d = b;
+         }
         /*
          * For loop with i
          */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+        for (int i = 0; i < d.length(); i++) {
+            for (int j = d.length() - i; j > 0; j--) {
+                for (int k = 0; k < c.length() - j; k++) {
+                    if (d.regionMatches(i, c, k, j)) {
+                         if (j > r.length()) {
+                             r = d.substring(i, i + j);
+                        }
+                    }
+                        }
+                }
+        }
+        return r;
+        }
 }
